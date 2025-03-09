@@ -13,7 +13,7 @@ def menu():
     "7. Add a product\n"
     "8. Exit Program")
 
-print("hi")
+print("Hello my N")
 while True:
     menu()
     choice = int(input("Select an option (number) from the choices above: "))
