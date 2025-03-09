@@ -1,0 +1,1 @@
+print("Can you please remove the Happy new year slide from the lecture 4, would gladly appreciate it my beautiful and gorgeous human being")
