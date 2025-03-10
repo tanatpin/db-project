@@ -3,25 +3,33 @@ from products.product import Product
 from customers.customer_transactions import CustomerTransaction
 from products.product_transactions import ProductTransaction
 from customers.branches import CustomerBranch
+from database import Database
+
+db = Database()
+
+def menu():
+    print("""---Company Search Engine Menu---\n
+          1. Add a new customer\n
+          2. Search for a customer\n
+          3. Update customer information\n
+          4. Add a new product\n
+          5. Search for a product\n
+          6. Update product information\n
+          7. View a customer's transaction history\n
+          8. View a product purchase history\n
+          9. Exit
+    """)
+
 
 def main():
-    customer = Customer()
-    product = Product()
-    customer_transactions = CustomerTransaction()
-    product_transactions = ProductTransaction()
-    branches = CustomerBranch()
+    customer = Customer(db)
+    product = Product(db)
+    customer_transactions = CustomerTransaction(db)
+    product_transactions = ProductTransaction(db)
+    branches = CustomerBranch(db)
 
     while True:
-        print("\n=== Company Database Menu ===")
-        print("1. Add a new customer")
-        print("2. Search for a customer")
-        print("3. Update customer information")
-        print("4. Add a new product")
-        print("5. Search for a product")
-        print("6. Update product information")
-        print("7. View a customer's transaction history")
-        print("8. View product purchase history")
-        print("9. Exit")
+        menu()
         
         choice = input("Enter your choice: ")
 
