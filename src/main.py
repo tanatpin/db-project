@@ -1,5 +1,5 @@
-from customer import Customer
-from product import Product
+from customers.customer import Customer
+from products.product import Product
 
 
 def menu():
