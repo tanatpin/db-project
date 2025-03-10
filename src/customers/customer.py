@@ -5,7 +5,7 @@ class Customer:
         self.db.execute("""
 
             CREATE TABLE IF NOT EXISTS customer_list (
-                customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                customer_id INTEGER PRIMARY KEY,
                 customer_type TEXT NOT NULL CHECK(customer_type IN ('Individual', 'Company')),
                 first_name TEXT,
                 last_name TEXT,
@@ -17,7 +17,7 @@ class Customer:
 
         """)
     
-    def newCustomer(self, customer_type, firstName=None, lastName=None, companyName=None, email=None, phoneNum=None, branchId=None):
+    def NewCustomer(self, customer_type, firstName=None, lastName=None, companyName=None, email=None, phoneNum=None, branchId=None):
         if customer_type not in ['Individual', 'Company']:
             raise ValueError("Invalid customer type. Must be 'Individual' or 'Company.'")
         

@@ -3,7 +3,7 @@ class CustomerBranch:
         self.db = db
         self.db.execute("""
             CREATE TABLE IF NOT EXISTS customer_branches (
-                branch_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                branch_id INTEGER PRIMARY KEY,
                 branch_name TEXT,
                 address TEXT NOT NULL,
                 city TEXT NOT NULL,

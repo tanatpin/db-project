@@ -3,7 +3,7 @@ class Product:
         self.db = db
         self.db.execute("""
             CREATE TABLE IF NOT EXISTS product_list (
-                product_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                product_id INTEGER PRIMARY KEY,
                 product_name TEXT NOT NULL,
                 category TEXT,
                 price DECIMAL NOT NULL,

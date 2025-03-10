@@ -3,7 +3,7 @@ class ProductTransaction:
         self.db = db
         self.db.execute("""
             CREATE TABLE IF NOT EXISTS product_transactions (
-                product_transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                product_transaction_id INTEGER PRIMARY KEY,
                 transaction_id INTEGER NOT NULL,
                 product_id INTEGER NOT NULL,
                 quantity INTEGER NOT NULL CHECK(quantity > 0),

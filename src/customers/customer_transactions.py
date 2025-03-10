@@ -3,7 +3,7 @@ class CustomerTransaction:
         self.db = db
         self.db.execute("""
             CREATE TABLE IF NOT EXISTS customer_transactions (
-                transaction_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                transaction_id INTEGER PRIMARY KEY,
                 customer_id INTEGER NOT NULL,
                 total_amount DECIMAL NOT NULL CHECK(total_amount >= 0),
                 transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

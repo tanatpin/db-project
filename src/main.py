@@ -9,15 +9,15 @@ db = Database()
 
 def menu():
     print("""---Company Search Engine Menu---\n
-          1. Add a new customer\n
-          2. Search for a customer\n
-          3. Update customer information\n
-          4. Add a new product\n
-          5. Search for a product\n
-          6. Update product information\n
-          7. View a customer's transaction history\n
-          8. View a product purchase history\n
-          9. Exit
+        1. Add a new customer\n
+        2. Search for a customer\n
+        3. Update customer information\n
+        4. Add a new product\n
+        5. Search for a product\n
+        6. Update product information\n
+        7. View a customer's transaction history\n
+        8. View a product purchase history\n
+        9. Exit
     """)
 
 
