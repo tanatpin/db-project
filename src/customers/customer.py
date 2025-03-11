@@ -11,8 +11,11 @@ class Customer:
         print("Customer added successfully!")
 
     def SearchCustomer(self, customer_id):
-        query = "SELECT * FROM customers WHERE customer_id = ?"
-        result = self.db.fetch_query(query, (customer_id,))
+        query = "SELECT * FROM customers WHERE customer_id = ? OR first_name ILIKE ? OR last_name ILIKE ? OR company_name ILIKE ?"
+
+        searchWildCard = f"%{customer_id}%"
+
+        result = self.db.fetch_query(query, (customer_id, searchWildCard, searchWildCard, searchWildCard))
         if result:
             print(result)
         else:

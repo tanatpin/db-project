@@ -11,7 +11,7 @@ class Database:
         self.cursor.executescript("""
         CREATE TABLE IF NOT EXISTS customers (
             customer_id INTEGER PRIMARY KEY AUTOINCREMENT,
-            customer_type TEXT CHECK (customer_type IN ('Individual', 'Company')),
+            customer_type TEXT,
             first_name TEXT,
             last_name TEXT,
             company_name TEXT,
