@@ -52,11 +52,11 @@ def main():
             branch_id = input("Enter branch ID: ").strip()
             branch_id = int(branch_id) if branch_id.isdigit() else None
 
-            customer.new_customer(customer_type, first_name, last_name, company_name, email, phone, branch_id)
+            customer.NewCustomer(customer_type, first_name, last_name, company_name, email, phone, branch_id)
 
         elif choice == "2":
             search_term = input("Enter customer name, company, or email to search: ").strip()
-            customer.search_customer(search_term)
+            customer.SearchCustomer(search_term)
 
         elif choice == "3":
             customer_id = input("Enter customer ID to update: ").strip()
@@ -65,7 +65,7 @@ def main():
             branch_id = input("Enter new branch ID (leave blank to keep current): ").strip()
             branch_id = int(branch_id) if branch_id.isdigit() else None
 
-            customer.update_customer(customer_id, email=email, phone_number=phone, branch_id=branch_id)
+            customer.UpdateCustomer(customer_id, email=email, phone_number=phone, branch_id=branch_id)
 
         elif choice == "4":
             # Add a new product
@@ -77,13 +77,13 @@ def main():
             try:
                 price = float(price)
                 stock_quantity = int(stock_quantity)
-                product.new_product(product_name, category, price, stock_quantity)
+                product.NewProduct(product_name, category, price, stock_quantity)
             except ValueError:
                 print("Invalid input for price or stock quantity. Please enter numerical values.")
 
         elif choice == "5":
             search_term = input("Enter product name or category to search: ").strip()
-            product.search_product(search_term)
+            product.SearchProduct(search_term)
 
         elif choice == "6":
             product_id = input("Enter product ID to update: ").strip()
@@ -93,15 +93,15 @@ def main():
             price = float(price) if price else None
             stock_quantity = int(stock_quantity) if stock_quantity else None
 
-            product.update_product(product_id, price=price, stock_quantity=stock_quantity)
+            product.UpdateProduct(product_id, price=price, stock_quantity=stock_quantity)
 
         elif choice == "7":
             customer_id = input("Enter customer ID to view purchase history: ").strip()
-            customer_transactions.customer_purchase(customer_id)
+            customer_transactions.CustomerPurchase(customer_id)
 
         elif choice == "8":
             product_id = input("Enter product ID to view purchase history: ").strip()
-            product_transactions.product_purchase(product_id)
+            product_transactions.ProductPurchase(product_id)
 
         elif choice == "9":
             print("Exiting program...")
