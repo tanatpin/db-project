@@ -8,15 +8,15 @@ from database import Database
 db = Database()
 
 def menu():
-    print("""---Company Search Engine Menu---\n
-        1. Add a new customer\n
-        2. Search for a customer\n
-        3. Update customer information\n
-        4. Add a new product\n
-        5. Search for a product\n
-        6. Update product information\n
-        7. View a customer's transaction history\n
-        8. View a product purchase history\n
+    print("""\n--- Company Search Engine Menu ---\n
+        1. Add a new customer
+        2. Search for a customer
+        3. Update customer information
+        4. Add a new product
+        5. Search for a product
+        6. Update product information
+        7. View a customer's transaction history
+        8. View a product purchase history
         9. Exit
     """)
 
@@ -34,61 +34,74 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == "1":
-            # User input for adding a new customer
-            customer_type = input("Enter customer type (Individual/Company): ")
-            if customer_type.lower() == "individual":
-                first_name = input("Enter first name: ")
-                last_name = input("Enter last name: ")
+            # Add a new customer
+            customer_type = input("Enter customer type (Individual/Company): ").strip().lower()
+            if customer_type == "individual":
+                first_name = input("Enter first name: ").strip() or None
+                last_name = input("Enter last name: ").strip() or None
                 company_name = None
+            elif customer_type == "company":
+                first_name, last_name = None, None
+                company_name = input("Enter company name: ").strip() or None
             else:
-                first_name = None
-                last_name = None
-                company_name = input("Enter company name: ")
-            email = input("Enter email: ")
-            phone = input("Enter phone number: ")
-            branch_id = input("Enter branch ID: ")
-            
-            customer.NewCustomer(customer_type, first_name, last_name, company_name, email, phone, branch_id)
+                print("Invalid customer type. Please enter 'Individual' or 'Company'.")
+                continue
+
+            email = input("Enter email: ").strip() or None
+            phone = input("Enter phone number: ").strip() or None
+            branch_id = input("Enter branch ID: ").strip()
+            branch_id = int(branch_id) if branch_id.isdigit() else None
+
+            customer.new_customer(customer_type, first_name, last_name, company_name, email, phone, branch_id)
 
         elif choice == "2":
-            customer_id = input("Enter customer ID to search: ")
-            customer.SearchCustomer(customer_id)
+            search_term = input("Enter customer name, company, or email to search: ").strip()
+            customer.search_customer(search_term)
 
         elif choice == "3":
-            customer_id = input("Enter customer ID to update: ")
-            email = input("Enter new email (leave blank to keep current): ")
-            phone = input("Enter new phone (leave blank to keep current): ")
-            branch_id = input("Enter new branch ID (leave blank to keep current): ")
-            
-            customer.UpdateCustomer(customer_id, email, phone, branch_id)
+            customer_id = input("Enter customer ID to update: ").strip()
+            email = input("Enter new email (leave blank to keep current): ").strip() or None
+            phone = input("Enter new phone (leave blank to keep current): ").strip() or None
+            branch_id = input("Enter new branch ID (leave blank to keep current): ").strip()
+            branch_id = int(branch_id) if branch_id.isdigit() else None
+
+            customer.update_customer(customer_id, email=email, phone_number=phone, branch_id=branch_id)
 
         elif choice == "4":
-            # User input for adding a new product
-            product_name = input("Enter product name: ")
-            category = input("Enter product category: ")
-            price = float(input("Enter product price: "))
-            stock_quantity = int(input("Enter stock quantity: "))
+            # Add a new product
+            product_name = input("Enter product name: ").strip()
+            category = input("Enter product category: ").strip()
+            price = input("Enter product price: ").strip()
+            stock_quantity = input("Enter stock quantity: ").strip()
 
-            product.NewProduct(product_name, category, price, stock_quantity)
+            try:
+                price = float(price)
+                stock_quantity = int(stock_quantity)
+                product.new_product(product_name, category, price, stock_quantity)
+            except ValueError:
+                print("Invalid input for price or stock quantity. Please enter numerical values.")
 
         elif choice == "5":
-            product_id = input("Enter product ID to search: ")
-            product.SearchProduct(product_id)
+            search_term = input("Enter product name or category to search: ").strip()
+            product.search_product(search_term)
 
         elif choice == "6":
-            product_id = input("Enter product ID to update: ")
-            price = input("Enter new price (leave blank to keep current): ")
-            stock_quantity = input("Enter new stock quantity (leave blank to keep current): ")
-            
-            product.UpdateProduct(product_id, price, stock_quantity)
+            product_id = input("Enter product ID to update: ").strip()
+            price = input("Enter new price (leave blank to keep current): ").strip()
+            stock_quantity = input("Enter new stock quantity (leave blank to keep current): ").strip()
+
+            price = float(price) if price else None
+            stock_quantity = int(stock_quantity) if stock_quantity else None
+
+            product.update_product(product_id, price=price, stock_quantity=stock_quantity)
 
         elif choice == "7":
-            customer_id = input("Enter customer ID to view purchase history: ")
-            customer_transactions.CustomerPurchase(customer_id)
+            customer_id = input("Enter customer ID to view purchase history: ").strip()
+            customer_transactions.customer_purchase(customer_id)
 
         elif choice == "8":
-            product_id = input("Enter product ID to view purchase history: ")
-            product_transactions.ProductPurchase(product_id)
+            product_id = input("Enter product ID to view purchase history: ").strip()
+            product_transactions.product_purchase(product_id)
 
         elif choice == "9":
             print("Exiting program...")
@@ -96,6 +109,7 @@ def main():
 
         else:
             print("Invalid choice, please try again.")
+
 
 if __name__ == "__main__":
     main()
