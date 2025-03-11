@@ -11,7 +11,7 @@ class Customer:
         print("Customer added successfully!")
 
     def SearchCustomer(self, customer_id):
-        query = "SELECT * FROM customers WHERE customer_id = ? OR first_name ILIKE ? OR last_name ILIKE ? OR company_name ILIKE ?"
+        query = "SELECT * FROM customers WHERE customer_id = ? OR first_name ILIKE ? OR last_name ILIKE ? OR company_name ILIKE ? OR email ILIKE ?"
 
         searchWildCard = f"%{customer_id}%"
 
