@@ -12,7 +12,8 @@ class Customer:
                 company_name TEXT,
                 email TEXT,
                 phone_number TEXT,
-                branch_id INTEGER
+                branch_id INTEGER,
+                FOREIGN KEY (branch_id) REFERENCES customer_branches(branch_id)
                         );
 
         """)
