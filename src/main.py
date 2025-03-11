@@ -65,7 +65,7 @@ def main():
             branch_id = input("Enter new branch ID (leave blank to keep current): ").strip()
             branch_id = int(branch_id) if branch_id.isdigit() else None
 
-            customer.UpdateCustomer(customer_id, email=email, phone_number=phone, branch_id=branch_id)
+            customer.UpdateCustomer(customer_id, email=email, phone=phone, branch_id=branch_id)
 
         elif choice == "4":
             # Add a new product

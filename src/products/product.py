@@ -11,8 +11,11 @@ class Product:
         print("Product added successfully!")
 
     def SearchProduct(self, product_id):
-        query = "SELECT * FROM products WHERE product_id = ?"
-        result = self.db.fetch_query(query, (product_id,))
+        query = "SELECT * FROM products WHERE product_id = ? OR product_name LIKE ?"
+
+        searchWildCard = f"%{product_id}%"
+
+        result = self.db.fetch_query(query, (product_id, searchWildCard))
         if result:
             print(result)
         else:
