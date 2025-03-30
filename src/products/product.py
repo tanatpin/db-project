@@ -2,12 +2,12 @@ class Product:
     def __init__(self, db):
         self.db = db
 
-    def NewProduct(self, product_name, category, price, stock_quantity):
+    def NewProduct(self, product_name, supplier, category, price, stock_quantity):
         query = """
-        INSERT INTO products (product_name, category, price, stock_quantity)
+        INSERT INTO products (product_name, supplier, category, price, stock_quantity)
         VALUES (?, ?, ?, ?)
         """
-        self.db.execute_query(query, (product_name, category, price, stock_quantity))
+        self.db.execute_query(query, (product_name, supplier, category, price, stock_quantity))
         print("Product added successfully!")
 
     def SearchProduct(self, product_id):

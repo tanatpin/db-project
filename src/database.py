@@ -23,6 +23,7 @@ class Database:
             product_id INTEGER PRIMARY KEY AUTOINCREMENT,
             product_name TEXT NOT NULL,
             category TEXT NOT NULL,
+            supplier TEXT NOT NULL,
             price REAL NOT NULL,
             stock_quantity INTEGER NOT NULL
         );

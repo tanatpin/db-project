@@ -70,6 +70,7 @@ def main():
         elif choice == "4":
             # Add a new product
             product_name = input("Enter product name: ").strip()
+            supplier = input("Enter a supplier name: ").strip()
             category = input("Enter product category: ").strip()
             price = input("Enter product price: ").strip()
             stock_quantity = input("Enter stock quantity: ").strip()
@@ -77,7 +78,7 @@ def main():
             try:
                 price = float(price)
                 stock_quantity = int(stock_quantity)
-                product.NewProduct(product_name, category, price, stock_quantity)
+                product.NewProduct(product_name, supplier, category, price, stock_quantity)
             except ValueError:
                 print("Invalid input for price or stock quantity. Please enter numerical values.")
 
