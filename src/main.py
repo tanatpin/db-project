@@ -105,6 +105,7 @@ def main():
 
         elif choice == "9":
             print("Exiting program...")
+            print("Exited Program Successfully.")
             break
 
         else:
